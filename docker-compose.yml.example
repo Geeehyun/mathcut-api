@@ -1,0 +1,68 @@
+version: "3.8"
+
+#################################################
+# mathcut docker-compose.yml
+#
+# 구성:
+# 1) api   : Spring Boot 백엔드 (포트 9090)
+# 2) front : Vue 빌드 결과를 nginx로 정적 서빙
+#
+# ⚠️ 주의
+# - SSL(443)은 기존 서버 nginx가 담당
+# - /api/ 요청 → 9090 포트로 프록시
+# - 프론트 요청 → 4000 포트로 프록시
+#################################################
+
+services:
+
+  #################################################
+  # 1️⃣ 백엔드 API (Spring Boot)
+  #################################################
+  api:
+    image: ghcr.io/geeehyun/mathcut-api:latest
+    container_name: mathcut-api
+    restart: always
+
+    environment:
+      TZ: Asia/Seoul
+      SPRING_PROFILES_ACTIVE: prod
+
+      # DB 설정
+      DB_USERNAME: mathcut-api
+      DB_PASSWORD: your-db-password
+
+      # OpenAI
+      OPENAI_API_KEY: sk-...
+
+      # JWT
+      JWT_SECRET: your-jwt-secret-key-must-be-at-least-32-chars
+
+      # CORS
+      CORS_ALLOWED_ORIGINS: https://mathcut.emotion-flowerbed.my
+
+    ports:
+      - "9090:9090"
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+
+  #################################################
+  # 2️⃣ 프론트엔드 (Vue 정적 파일 + nginx)
+  #################################################
+  front:
+    image: ghcr.io/geeehyun/mathcut-front:latest
+    container_name: mathcut-front
+    restart: always
+
+    ports:
+      - "4000:80"
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

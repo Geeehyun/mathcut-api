@@ -1,0 +1,29 @@
+server:
+  port: 9090
+
+spring:
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD}
+      database: 1
+  datasource:
+    url: jdbc:mariadb://localhost:3306/mathcut?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    open-in-view: false
+
+openai:
+  api-key: ${OPENAI_API_KEY}
+
+jwt:
+  secret: ${JWT_SECRET}
+
+cors:
+  allowed-origins: https://mathcut.emotion-flowerbed.my

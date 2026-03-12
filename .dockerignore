@@ -1,0 +1,75 @@
+# ========================================
+# Docker 이미지 빌드 시 제외할 파일/폴더
+# ========================================
+
+# ❌ 빌드 결과물 (컨테이너 안에서 새로 생성)
+build/
+target/
+*.jar
+*.war
+*.class
+
+# ❌ Gradle 캐시 (wrapper는 필요함!)
+.gradle/
+
+# ✅ Gradle Wrapper는 반드시 포함
+!gradle/
+!gradle/wrapper/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+!gradlew
+
+# Git 관련
+.git/
+.gitignore
+.gitattributes
+
+# IDE 설정 파일
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+.settings/
+.classpath
+.project
+
+# 로그 파일
+*.log
+logs/
+
+# OS 생성 파일
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# 문서 파일
+*.md
+LICENSE
+docs/
+
+# CI/CD 설정 파일 (이미지엔 불필요)
+.github/
+docker-compose*.yml
+
+# Docker 설정 파일은 빌드에 필요
+!.dockerignore
+!Dockerfile
+
+# 환경 설정 파일
+.env
+.env.local
+.env.*.local
+src/main/resources/application-local.yml
+
+# 임시 파일
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+*~
+
+# 테스트 결과물
+test-results/
+coverage/

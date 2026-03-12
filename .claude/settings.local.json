@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl.exe --version)",
+      "Bash(curl.exe -s \"https://start.spring.io/starter.zip?type=gradle-project&language=java&bootVersion=3.4.3&baseDir=.&groupId=com.vision&artifactId=mathcut-api&name=mathcut-api&packageName=com.vision.mathcut&javaVersion=21&dependencies=web,lombok,validation,devtools\" -o starter.zip)",
+      "Bash(curl.exe -s \"https://start.spring.io/starter.zip?type=gradle-project&language=java&bootVersion=3.5.0&baseDir=.&groupId=com.vision&artifactId=mathcut-api&name=mathcut-api&packageName=com.vision.mathcut&javaVersion=21&dependencies=web,lombok,validation,devtools\" -o starter.zip)",
+      "Bash(unzip -o starter.zip)",
+      "Bash(rm starter.zip)",
+      "Bash(./gradlew compileJava)",
+      "Bash(mysql -u claude -pclaude_by_geehyun_260312 -e \"SELECT CURRENT_USER\\(\\), NOW\\(\\);\")",
+      "Bash(mysql -u claude -pclaude_by_geehyun_260312 -e \"SHOW GRANTS FOR ''claude''@''localhost'';\")",
+      "Bash(mysql -u claude -pclaude_by_geehyun_260312 mathcut -e \"SHOW GRANTS FOR ''claude''@''localhost''; SHOW TABLES;\")",
+      "Bash(mysql -u:*)",
+      "Bash(mysql -u claude -pclaude_by_geehyun_260312 mathcut -e \"SHOW TABLES; DESCRIBE users; DESCRIBE cuts;\")",
+      "WebFetch(domain:github.com)",
+      "Bash(node -e \"console.log\\(require\\(''crypto''\\).randomBytes\\(48\\).toString\\(''base64''\\)\\)\")"
+    ]
+  }
+}
