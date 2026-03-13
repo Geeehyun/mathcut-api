@@ -38,7 +38,7 @@ services:
       JWT_SECRET: your-jwt-secret-key-must-be-at-least-32-chars
 
       # CORS
-      CORS_ALLOWED_ORIGINS: https://mathcut.emotion-flowerbed.my
+      CORS_ALLOWED_ORIGINS: https://mathcut.emotion-flowerbed.my,https://emotion-flowerbed.my
 
     ports:
       - "9090:9090"
