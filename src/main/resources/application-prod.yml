@@ -26,4 +26,4 @@ jwt:
   secret: ${JWT_SECRET}
 
 cors:
-  allowed-origins: https://mathcut.emotion-flowerbed.my
+  allowed-origins: https://mathcut.emotion-flowerbed.my,https://emotion-flowerbed.my
